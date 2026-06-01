@@ -564,19 +564,35 @@ function mostrarIsapres(isapresOrdenadas = null) {
 // Cargar indicadores del día (UF y Dólar)
 async function cargarIndicadoresDelDia() {
   try {
-    // Simular obtención de datos (en próxima iteración integraremos API real)
-    const indicadores = {
-      uf: 37895.50,
-      dolar: 945.30
-    };
+    // Obtener indicadores reales de Mindicador
+    const response = await fetch(`${API_BASE}/indicadores-diarios`);
+    const data = await response.json();
 
     const ufValue = document.getElementById('ufValue');
     const dolarValue = document.getElementById('dolarValue');
     const indicadoresDiv = document.getElementById('indicadoresDelDia');
+    const indicadoresLabel = document.getElementById('indicadoresLabel');
 
     if (ufValue && dolarValue && indicadoresDiv) {
-      ufValue.textContent = formatearMoneda(indicadores.uf);
-      dolarValue.textContent = formatearMoneda(indicadores.dolar);
+      ufValue.textContent = formatearMoneda(data.uf);
+      dolarValue.textContent = formatearMoneda(data.dolar);
+
+      // Mostrar fecha de actualización
+      if (indicadoresLabel) {
+        const fecha = new Date(data.fecha_actualizacion);
+        const fechaFormato = fecha.toLocaleDateString('es-CL', {
+          day: '2-digit',
+          month: 'long',
+          year: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit'
+        });
+        indicadoresLabel.textContent = `Actualizado: ${fechaFormato}`;
+        indicadoresLabel.style.fontSize = '0.8rem';
+        indicadoresLabel.style.color = 'var(--text-tertiary)';
+        indicadoresLabel.style.marginTop = '8px';
+      }
+
       indicadoresDiv.style.display = 'flex';
     }
   } catch (error) {

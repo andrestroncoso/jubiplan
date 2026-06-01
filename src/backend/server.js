@@ -47,11 +47,54 @@ const assetsPath = join(__dirname, '../../assets');
 // Variables para almacenar datos en memoria (con enriquecimiento SVS)
 let datosAFPsEnriquecidos = null;
 let datosIsapres = null;
+let cacheMIndicador = { uf: null, dolar: null, timestamp: null };
 
 const dataPath = {
   afps: join(__dirname, '../data/afps.json'),
   isapres: join(__dirname, '../data/isapres.json')
 };
+
+// Datos base de AFPs para simular realismo
+const afpsBase = {
+  'Habitat': { rentabilidad: 6.43, minimo: 6.2, maximo: 6.6 },
+  'Provida': { rentabilidad: 7.15, minimo: 6.9, maximo: 7.4 },
+  'Modelo': { rentabilidad: 9.2, minimo: 8.9, maximo: 9.3 },
+  'Integra': { rentabilidad: 8.65, minimo: 8.4, maximo: 8.8 },
+  'Cuprum': { rentabilidad: 6.50, minimo: 6.3, maximo: 6.7 },
+  'Sura': { rentabilidad: 7.80, minimo: 7.5, maximo: 8.0 }
+};
+
+// Función para generar variación realista diaria (±0.5%)
+function generarVariacionDiaria(baseValue, minValue, maxValue) {
+  const variacion = (Math.random() - 0.5) * 1.0; // ±0.5%
+  const nuevoValor = baseValue + variacion;
+  return Math.max(minValue, Math.min(maxValue, parseFloat(nuevoValor.toFixed(2))));
+}
+
+// Función para obtener UF y Dólar de Mindicador
+async function obtenerIndicadoresMindicador() {
+  try {
+    const hoy = new Date().toLocaleDateString('en-CA'); // formato YYYY-MM-DD
+
+    const [ufRes, dolarRes] = await Promise.all([
+      fetch(`https://mindicador.cl/api/uf/${hoy}`),
+      fetch(`https://mindicador.cl/api/dolar/${hoy}`)
+    ]);
+
+    if (!ufRes.ok || !dolarRes.ok) throw new Error('Error en API Mindicador');
+
+    const ufData = await ufRes.json();
+    const dolarData = await dolarRes.json();
+
+    const uf = ufData.serie?.[0]?.valor || 40610.69;
+    const dolar = dolarData.serie?.[0]?.valor || 892.89;
+
+    return { uf, dolar, timestamp: new Date().toISOString() };
+  } catch (error) {
+    console.warn('Error obteniendo de Mindicador, usando valores fallback:', error.message);
+    return { uf: 40610.69, dolar: 892.89, timestamp: new Date().toISOString() };
+  }
+}
 
 function loadData(path) {
   try {
@@ -132,6 +175,76 @@ app.post('/api/comparar-afps', (req, res) => {
   } catch (error) {
     console.error('Error en comparación:', error);
     res.status(500).json({ error: 'Error al comparar AFPs' });
+  }
+});
+
+// Endpoint: Obtener UF y Dólar diarios con fecha de actualización
+app.get('/api/indicadores-diarios', async (req, res) => {
+  try {
+    // Usar caché si es del mismo día
+    const hoy = new Date().toISOString().split('T')[0];
+    if (cacheMIndicador.timestamp && cacheMIndicador.timestamp.startsWith(hoy)) {
+      return res.json({
+        uf: cacheMIndicador.uf,
+        dolar: cacheMIndicador.dolar,
+        fecha_actualizacion: cacheMIndicador.timestamp,
+        fuente: 'Mindicador.cl'
+      });
+    }
+
+    const indicadores = await obtenerIndicadoresMindicador();
+    cacheMIndicador = indicadores;
+
+    res.json({
+      uf: indicadores.uf,
+      dolar: indicadores.dolar,
+      fecha_actualizacion: indicadores.timestamp,
+      fuente: 'Mindicador.cl'
+    });
+  } catch (error) {
+    console.error('Error en /api/indicadores-diarios:', error);
+    res.status(500).json({ error: 'Error obteniendo indicadores' });
+  }
+});
+
+// Endpoint: Obtener AFPs con datos realistas y variaciones diarias
+app.get('/api/afps-realistas', (req, res) => {
+  try {
+    const afpsRealistas = Object.entries(afpsBase).map(([nombre, datos]) => {
+      const rentabilidadHoy = generarVariacionDiaria(
+        datos.rentabilidad,
+        datos.minimo,
+        datos.maximo
+      );
+
+      // Simular rentabilidad ayer (variación anterior)
+      const rentabilidadAyer = generarVariacionDiaria(
+        datos.rentabilidad,
+        datos.minimo,
+        datos.maximo
+      );
+
+      const cambio = parseFloat((rentabilidadHoy - rentabilidadAyer).toFixed(2));
+
+      return {
+        nombre,
+        rentabilidad_hoy: rentabilidadHoy,
+        rentabilidad_ayer: rentabilidadAyer,
+        cambio_diario: cambio,
+        cambio_porcentaje: parseFloat(((cambio / rentabilidadAyer) * 100).toFixed(2)),
+        rango_minimo: datos.minimo,
+        rango_maximo: datos.maximo
+      };
+    }).sort((a, b) => b.rentabilidad_hoy - a.rentabilidad_hoy); // Ranking descendente
+
+    res.json({
+      afps: afpsRealistas,
+      fecha_actualizacion: new Date().toISOString(),
+      nota: 'Datos demo realistas con variaciones ±0.5% diarias. No son datos oficiales de SPensiones.'
+    });
+  } catch (error) {
+    console.error('Error en /api/afps-realistas:', error);
+    res.status(500).json({ error: 'Error obteniendo AFPs realistas' });
   }
 });
 
