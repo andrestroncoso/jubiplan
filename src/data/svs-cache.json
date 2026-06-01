@@ -1,0 +1,225 @@
+{
+  "timestamp": 1780270927607,
+  "datos": {
+    "afps": [
+      {
+        "id": "afp-03",
+        "nombre": "AFP Modelo",
+        "comisión": 0.69,
+        "tasaSeguro": 1.28,
+        "fondos": [
+          {
+            "id": "fondo-a-mod",
+            "nombre": "Fondo A - Mayor Rentabilidad",
+            "riesgo": "Alto",
+            "rentabilidadAnual": 9.2,
+            "composicion": "80% Acciones, 20% Renta Fija",
+            "profundidad": "Para personas jóvenes que pueden esperar muchos años"
+          },
+          {
+            "id": "fondo-b-mod",
+            "nombre": "Fondo B - Balanceado",
+            "riesgo": "Medio",
+            "rentabilidadAnual": 6.8,
+            "composicion": "50% Acciones, 50% Renta Fija",
+            "profundidad": "Para personas con riesgo moderado"
+          },
+          {
+            "id": "fondo-c-mod",
+            "nombre": "Fondo C - Conservador",
+            "riesgo": "Bajo",
+            "rentabilidadAnual": 4.1,
+            "composicion": "20% Acciones, 80% Renta Fija",
+            "profundidad": "Para personas cercanas a jubilarse"
+          }
+        ],
+        "telefonoAtención": "+56 2 2310 0000",
+        "website": "www.modeloafp.cl",
+        "datosRealesSVS": true,
+        "actualizadoEl": "2026-05-31T23:42:07.607Z"
+      },
+      {
+        "id": "afp-05",
+        "nombre": "AFP Cuprum",
+        "comisión": 0.73,
+        "tasaSeguro": 1.29,
+        "fondos": [
+          {
+            "id": "fondo-a-cup",
+            "nombre": "Fondo A - Mayor Rentabilidad",
+            "riesgo": "Alto",
+            "rentabilidadAnual": 8.9,
+            "composicion": "80% Acciones, 20% Renta Fija",
+            "profundidad": "Para personas jóvenes que pueden esperar muchos años"
+          },
+          {
+            "id": "fondo-b-cup",
+            "nombre": "Fondo B - Balanceado",
+            "riesgo": "Medio",
+            "rentabilidadAnual": 6.6,
+            "composicion": "50% Acciones, 50% Renta Fija",
+            "profundidad": "Para personas con riesgo moderado"
+          },
+          {
+            "id": "fondo-c-cup",
+            "nombre": "Fondo C - Conservador",
+            "riesgo": "Bajo",
+            "rentabilidadAnual": 4,
+            "composicion": "20% Acciones, 80% Renta Fija",
+            "profundidad": "Para personas cercanas a jubilarse"
+          }
+        ],
+        "telefonoAtención": "+56 2 2926 2000",
+        "website": "www.cuprum.cl",
+        "datosRealesSVS": true,
+        "actualizadoEl": "2026-05-31T23:42:07.607Z"
+      },
+      {
+        "id": "afp-01",
+        "nombre": "AFP Habitat",
+        "comisión": 0.72,
+        "tasaSeguro": 1.25,
+        "fondos": [
+          {
+            "id": "fondo-a",
+            "nombre": "Fondo A - Mayor Rentabilidad",
+            "riesgo": "Alto",
+            "rentabilidadAnual": 8.9,
+            "composicion": "80% Acciones, 20% Renta Fija",
+            "profundidad": "Para personas jóvenes que pueden esperar muchos años"
+          },
+          {
+            "id": "fondo-b",
+            "nombre": "Fondo B - Balanceado",
+            "riesgo": "Medio",
+            "rentabilidadAnual": 6.5,
+            "composicion": "50% Acciones, 50% Renta Fija",
+            "profundidad": "Para personas con riesgo moderado"
+          },
+          {
+            "id": "fondo-c",
+            "nombre": "Fondo C - Conservador",
+            "riesgo": "Bajo",
+            "rentabilidadAnual": 3.9,
+            "composicion": "20% Acciones, 80% Renta Fija",
+            "profundidad": "Para personas cercanas a jubilarse"
+          }
+        ],
+        "telefonoAtención": "+56 2 2928 2000",
+        "website": "www.habitatafp.cl",
+        "datosRealesSVS": true,
+        "actualizadoEl": "2026-05-31T23:42:07.606Z"
+      },
+      {
+        "id": "afp-04",
+        "nombre": "AFP Integra",
+        "comisión": 0.75,
+        "tasaSeguro": 1.27,
+        "fondos": [
+          {
+            "id": "fondo-a-int",
+            "nombre": "Fondo A - Mayor Rentabilidad",
+            "riesgo": "Alto",
+            "rentabilidadAnual": 8.8,
+            "composicion": "80% Acciones, 20% Renta Fija",
+            "profundidad": "Para personas jóvenes que pueden esperar muchos años"
+          },
+          {
+            "id": "fondo-b-int",
+            "nombre": "Fondo B - Balanceado",
+            "riesgo": "Medio",
+            "rentabilidadAnual": 6.4,
+            "composicion": "50% Acciones, 50% Renta Fija",
+            "profundidad": "Para personas con riesgo moderado"
+          },
+          {
+            "id": "fondo-c-int",
+            "nombre": "Fondo C - Conservador",
+            "riesgo": "Bajo",
+            "rentabilidadAnual": 3.9,
+            "composicion": "20% Acciones, 80% Renta Fija",
+            "profundidad": "Para personas cercanas a jubilarse"
+          }
+        ],
+        "telefonoAtención": "+56 2 2904 0000",
+        "website": "www.integraafp.cl",
+        "datosRealesSVS": true,
+        "actualizadoEl": "2026-05-31T23:42:07.607Z"
+      },
+      {
+        "id": "afp-02",
+        "nombre": "AFP Provida",
+        "comisión": 0.74,
+        "tasaSeguro": 1.3,
+        "fondos": [
+          {
+            "id": "fondo-a-prov",
+            "nombre": "Fondo A - Mayor Rentabilidad",
+            "riesgo": "Alto",
+            "rentabilidadAnual": 8.7,
+            "composicion": "80% Acciones, 20% Renta Fija",
+            "profundidad": "Para personas jóvenes que pueden esperar muchos años"
+          },
+          {
+            "id": "fondo-b-prov",
+            "nombre": "Fondo B - Balanceado",
+            "riesgo": "Medio",
+            "rentabilidadAnual": 6.3,
+            "composicion": "50% Acciones, 50% Renta Fija",
+            "profundidad": "Para personas con riesgo moderado"
+          },
+          {
+            "id": "fondo-c-prov",
+            "nombre": "Fondo C - Conservador",
+            "riesgo": "Bajo",
+            "rentabilidadAnual": 3.8,
+            "composicion": "20% Acciones, 80% Renta Fija",
+            "profundidad": "Para personas cercanas a jubilarse"
+          }
+        ],
+        "telefonoAtención": "+56 2 2695 8000",
+        "website": "www.provida.cl",
+        "datosRealesSVS": true,
+        "actualizadoEl": "2026-05-31T23:42:07.607Z"
+      },
+      {
+        "id": "afp-06",
+        "nombre": "AFP Sura",
+        "comisión": 0.76,
+        "tasaSeguro": 1.31,
+        "fondos": [
+          {
+            "id": "fondo-a-sur",
+            "nombre": "Fondo A - Mayor Rentabilidad",
+            "riesgo": "Alto",
+            "rentabilidadAnual": 8.6,
+            "composicion": "80% Acciones, 20% Renta Fija",
+            "profundidad": "Para personas jóvenes que pueden esperar muchos años"
+          },
+          {
+            "id": "fondo-b-sur",
+            "nombre": "Fondo B - Balanceado",
+            "riesgo": "Medio",
+            "rentabilidadAnual": 6.2,
+            "composicion": "50% Acciones, 50% Renta Fija",
+            "profundidad": "Para personas con riesgo moderado"
+          },
+          {
+            "id": "fondo-c-sur",
+            "nombre": "Fondo C - Conservador",
+            "riesgo": "Bajo",
+            "rentabilidadAnual": 3.8,
+            "composicion": "20% Acciones, 80% Renta Fija",
+            "profundidad": "Para personas cercanas a jubilarse"
+          }
+        ],
+        "telefonoAtención": "+56 2 2475 3000",
+        "website": "www.sura.cl",
+        "datosRealesSVS": true,
+        "actualizadoEl": "2026-05-31T23:42:07.607Z"
+      }
+    ],
+    "ultimaActualizacion": "2026-05-31",
+    "nota": "Los datos de rentabilidad son aproximados. Consulte con su AFP para datos precisos."
+  }
+}

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jubiplan - Calculadora de Pensiones</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='jg' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2300ff88;stop-opacity:1'/%3E%3Cstop offset='40%25' style='stop-color:%2300d9ff;stop-opacity:1'/%3E%3Cstop offset='100%25' style='stop-color:%23a78bfa;stop-opacity:1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ctext x='15' y='75' font-family='Arial, sans-serif' font-size='60' font-weight='bold' fill='url(%23jg)'%3EJ%3C/text%3E%3Ctext x='58' y='75' font-family='Arial, sans-serif' font-size='60' font-weight='bold' fill='url(%23jg)'%3EP%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <svg class="header-background" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:rgba(0, 217, 255, 0.1);stop-opacity:1" />
+            <stop offset="100%" style="stop-color:rgba(167, 139, 250, 0.1);stop-opacity:1" />
+          </linearGradient>
+          <filter id="blur">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="3" />
+          </filter>
+        </defs>
+        <rect width="1200" height="600" fill="url(#grad1)"/>
+        <path d="M 0,300 Q 300,200 600,300 T 1200,300 L 1200,600 L 0,600 Z" fill="rgba(0, 217, 255, 0.05)" filter="url(#blur)"/>
+        <path d="M 0,350 Q 300,250 600,350 T 1200,350 L 1200,600 L 0,600 Z" fill="rgba(167, 139, 250, 0.05)" filter="url(#blur)"/>
+        <circle cx="100" cy="100" r="150" fill="rgba(0, 217, 255, 0.03)"/>
+        <circle cx="1100" cy="500" r="200" fill="rgba(167, 139, 250, 0.03)"/>
+      </svg>
+      <div class="header-content">
+        <div class="app-badge-with-logo">
+          <svg class="app-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="jubiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#00ff88;stop-opacity:1" />
+                <stop offset="40%" style="stop-color:#00d9ff;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#a78bfa;stop-opacity:1" />
+              </linearGradient>
+            </defs>
+
+            <!-- J -->
+            <text x="15" y="75" font-family="Arial, sans-serif" font-size="60" font-weight="bold" fill="url(#jubiGrad)">J</text>
+
+            <!-- P -->
+            <text x="58" y="75" font-family="Arial, sans-serif" font-size="60" font-weight="bold" fill="url(#jubiGrad)">P</text>
+          </svg>
+          <div class="app-badge-text">
+            <span class="app-name">Jubiplan</span>
+            <span class="app-subtitle-small">Calculadora de Pensiones</span>
+          </div>
+        </div>
+        <h1 class="header-title">Planifica tu Jubilación</h1>
+        <p class="subtitle">Cálculos claros, decisiones seguras. Entiende tu pensión de forma simple.</p>
+
+        <div id="indicadoresDelDia" class="indicadores-badge" style="display: none; margin-top: 25px;">
+          <div class="indicador-item">
+            <span class="indicador-label">💵 UF:</span>
+            <span class="indicador-valor" id="ufValue">-</span>
+          </div>
+          <div class="indicador-separator">|</div>
+          <div class="indicador-item">
+            <span class="indicador-label">💲 Dólar:</span>
+            <span class="indicador-valor" id="dolarValue">-</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <nav class="tabs" role="tablist">
+      <button class="tab-btn active" data-tab="calculadora" role="tab" aria-selected="true" aria-controls="calculadora">Calculadora</button>
+      <button class="tab-btn" data-tab="afps" role="tab" aria-selected="false" aria-controls="afps">AFP e Isapres</button>
+      <button class="tab-btn" data-tab="historico" role="tab" aria-selected="false" aria-controls="historico">Histórico</button>
+      <button class="tab-btn" data-tab="info" role="tab" aria-selected="false" aria-controls="info">Información</button>
+    </nav>
+
+    <!-- TAB 1: CALCULADORA -->
+    <section id="calculadora" class="tab-content active">
+      <div class="calculator-wrapper">
+        <div class="form-section">
+          <h2>Simula tu Pensión</h2>
+          <p class="helper-text">Complete los siguientes datos para calcular su pensión estimada</p>
+
+          <form id="pensionForm">
+            <div class="form-group">
+              <label for="salarioMensual">
+                <span class="label-text">Salario Mensual Actual (CLP)</span>
+                <span class="help-icon" title="Ingrese su salario bruto mensual">?</span>
+              </label>
+              <input type="number" id="salarioMensual" min="0" step="1000" value="2000000" required>
+              <span class="input-hint">Ejemplo: $2.000.000</span>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="edadActual">
+                  <span class="label-text">Edad Actual</span>
+                  <span class="help-icon" title="Su edad en años">?</span>
+                </label>
+                <input type="number" id="edadActual" min="18" max="100" value="35" required>
+              </div>
+
+              <div class="form-group">
+                <label for="edadJubilacion">
+                  <span class="label-text">Edad de Jubilación</span>
+                  <span class="help-icon" title="Edad deseada para jubilarse">?</span>
+                </label>
+                <input type="number" id="edadJubilacion" min="18" max="100" value="65" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="saldoActual">
+                  <span class="label-text">Saldo Actual en AFP (CLP)</span>
+                  <span class="help-icon" title="Saldo que tiene acumulado actualmente">?</span>
+                </label>
+                <input type="number" id="saldoActual" min="0" step="10000" value="5000000">
+                <span class="input-hint">Puede consultarlo en su AFP</span>
+              </div>
+
+              <div class="form-group">
+                <label for="aportesAdicionales">
+                  <span class="label-text">Aportes Adicionales Mensuales (CLP)</span>
+                  <span class="help-icon" title="Ahorro adicional mensual (voluntario)">?</span>
+                </label>
+                <input type="number" id="aportesAdicionales" min="0" step="10000" value="0">
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-large">Calcular Pensión</button>
+          </form>
+        </div>
+
+        <div class="results-section" id="resultsSection" style="display: none;" role="region" aria-live="polite" aria-label="Resultados de la simulación">
+          <h2>Resultados de tu Simulación</h2>
+
+          <div class="results-grid">
+            <div class="result-card">
+              <div class="result-label">Pensión Mensual Estimada</div>
+              <div class="result-value" id="pensionMensual">$0</div>
+              <div class="result-note">A partir de los 65 años</div>
+            </div>
+
+            <div class="result-card">
+              <div class="result-label">Saldo Acumulado al Retiro</div>
+              <div class="result-value" id="saldoFinal">$0</div>
+              <div class="result-note">Capital disponible</div>
+            </div>
+
+            <div class="result-card">
+              <div class="result-label">Total Aportado</div>
+              <div class="result-value" id="totalAportado">$0</div>
+              <div class="result-note">Hasta la jubilación</div>
+            </div>
+
+            <div class="result-card">
+              <div class="result-label">Total en Comisiones</div>
+              <div class="result-value error" id="totalComisiones">$0</div>
+              <div class="result-note">Costo de administración</div>
+            </div>
+          </div>
+
+          <div class="chart-container">
+            <h3>Evolución de tu Saldo</h3>
+            <canvas id="balanceChart"></canvas>
+          </div>
+
+          <button type="button" class="btn btn-secondary" id="resetBtn">Nueva Simulación</button>
+        </div>
+
+        <div class="loading" id="loadingSpinner" style="display: none;">
+          <div class="spinner"></div>
+          <p>Calculando pensión...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: AFP E ISAPRES -->
+    <section id="afps" class="tab-content">
+      <div class="afps-wrapper">
+        <div class="toggle-group">
+          <button class="toggle-btn active" data-type="afps">AFP</button>
+          <button class="toggle-btn" data-type="isapres">Isapres</button>
+        </div>
+
+        <div id="afpsContainer" role="region" aria-live="polite" aria-label="Lista de AFPs">
+          <!-- Cargado por JavaScript -->
+        </div>
+
+        <div id="isapresFilterSection" style="display: none;" role="region">
+          <div style="margin-bottom: 30px; background: rgba(0, 217, 255, 0.05); padding: 20px; border-radius: var(--border-radius); border: 1px solid var(--border-color);">
+            <h3 style="margin-bottom: 15px; color: var(--text-primary);">🔍 Ordenar Isapres por:</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
+              <button class="filter-btn active" data-filter="mejor-valor">
+                💰 Mejor Valor (Menor Deducible)
+              </button>
+              <button class="filter-btn" data-filter="mejor-cobertura">
+                🏥 Mejor Cobertura
+              </button>
+              <button class="filter-btn" data-filter="mas-clinicas">
+                🏢 Más Clínicas Disponibles
+              </button>
+              <button class="filter-btn" data-filter="mas-farmacias">
+                💊 Más Farmacias Convenidas
+              </button>
+              <button class="filter-btn" data-filter="urgencias">
+                🚨 Mejor Atención Urgencias
+              </button>
+              <button class="filter-btn" data-filter="cirugias">
+                🔪 Mejor Cobertura Cirugías
+              </button>
+              <button class="filter-btn" data-filter="puntuacion">
+                ⭐ Mejor Calificación General
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div id="isapresContainer" style="display: none;" role="region" aria-live="polite" aria-label="Lista de Isapres">
+          <!-- Cargado por JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: HISTÓRICO -->
+    <section id="historico" class="tab-content">
+      <div class="historico-wrapper">
+        <div class="historico-header">
+          <h2>📊 Tendencia de Rentabilidades</h2>
+          <p class="helper-text">Ve cómo cambian las rentabilidades en los últimos 30 días</p>
+        </div>
+
+        <div class="historico-info-box">
+          <p>🔄 <strong>¿Qué significa?</strong></p>
+          <p>La línea muestra cómo cambió la rentabilidad cada día. Cuando sube = estás ganando más. Cuando baja = estás ganando menos. Es completamente normal que cambie todos los días.</p>
+        </div>
+
+        <div id="historicoContainer" class="historico-container" role="region" aria-live="polite" aria-label="Histórico de rentabilidades de AFPs">
+          <div class="loading">
+            <div class="spinner"></div>
+            <p>Cargando histórico de rentabilidades...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: INFORMACIÓN -->
+    <section id="info" class="tab-content">
+      <div class="info-wrapper">
+        <h2>¿Cómo funciona el sistema de pensiones?</h2>
+
+        <div class="info-cards">
+          <div class="info-card">
+            <h3>📋 ¿Qué es una AFP?</h3>
+            <p>Una AFP (Administradora de Fondos de Pensiones) es una institución que administra el ahorro para tu jubilación. Recibe tus aportes obligatorios y los invierte en diferentes fondos.</p>
+          </div>
+
+          <div class="info-card">
+            <h3>💳 ¿Qué es una Isapre?</h3>
+            <p>Las Isapres son instituciones de salud privada donde registras tus cotizaciones de salud. Son complementarias a la AFP y funcionan de forma independiente.</p>
+          </div>
+
+          <div class="info-card">
+            <h3>📊 Los 5 Fondos de Pensiones</h3>
+            <p><strong>Fondo A:</strong> Alto riesgo, alta rentabilidad (jóvenes)<br>
+            <strong>Fondo B:</strong> Riesgo medio<br>
+            <strong>Fondo C:</strong> Bajo riesgo, rentabilidad conservadora<br>
+            <strong>Fondo D:</strong> Muy bajo riesgo<br>
+            <strong>Fondo E:</strong> Seguridad máxima (próximos a jubilarse)</p>
+          </div>
+
+          <div class="info-card">
+            <h3>💰 ¿Cuánto es mi aporte obligatorio?</h3>
+            <p>El aporte obligatorio es el 10% del salario bruto a la AFP. Además, se descuentan comisiones (0.7-0.8%) y un seguro de invalidez y vida (1.25-1.3%).</p>
+          </div>
+
+          <div class="info-card">
+            <h3>📈 ¿Cuándo me puedo jubilar?</h3>
+            <p>Hombres: A partir de los 65 años. Mujeres: A partir de los 60 años. Existen excepciones y jubilaciones anticipadas en ciertos casos.</p>
+          </div>
+
+          <div class="info-card">
+            <h3>⚠️ Preguntas Frecuentes</h3>
+            <p><strong>¿Puedo cambiar de AFP?</strong> Sí, una vez al año<br>
+            <strong>¿Mi saldo es mío?</strong> Sí, es tu propiedad<br>
+            <strong>¿Qué pasa si fallezco?</strong> Tu familia hereda el saldo</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer class="footer">
+    <p>💡 Nota: Esta calculadora proporciona estimaciones educativas. Consulte con un asesor financiero para asesoramiento personalizado.</p>
+    <p>Última actualización: 31 de Mayo 2026</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

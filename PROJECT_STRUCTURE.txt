@@ -1,0 +1,279 @@
+================================================================================
+  CALCULADORA DE PENSIONES CHILE - ESTRUCTURA DEL PROYECTO
+================================================================================
+
+pension-calculator/                         (Raíz del proyecto)
+│
+├── 📦 CONFIGURACIÓN Y DEPENDENCIAS
+│   ├── package.json                       (Dependencias npm, scripts)
+│   ├── .gitignore                         (Archivos ignorados por Git)
+│   ├── .env.example                       (Variables de entorno template)
+│   └── node_modules/                      (Librerías instaladas)
+│
+├── 📝 DOCUMENTACIÓN
+│   ├── README.md                          (Documentación principal)
+│   ├── QUICKSTART.md                      (Guía rápida inicio 1 minuto)
+│   ├── CLAUDE.md                          (Contexto para Claude Code)
+│   ├── PROJECT_STRUCTURE.txt              (Este archivo)
+│   └── docs/
+│       └── ARCHITECTURE.md                (Arquitectura detallada)
+│
+├── 💻 CÓDIGO FUENTE (src/)
+│   │
+│   ├── 🎨 FRONTEND (src/frontend/)        [Cliente - HTML/CSS/JS]
+│   │   ├── index.html                     (Página principal)
+│   │   │   ├── Estructura HTML
+│   │   │   ├── 3 Tabs (Calculadora, AFP e Isapres, Info)
+│   │   │   └── Contenedores para dinámico
+│   │   │
+│   │   ├── 🎨 styles/
+│   │   │   └── main.css                   (Estilos completos)
+│   │   │       ├── Variables CSS (colores, fuentes)
+│   │   │       ├── Componentes reutilizables
+│   │   │       ├── Media queries (responsividad)
+│   │   │       └── Tema oscuro
+│   │   │
+│   │   └── 🚀 js/
+│   │       └── app.js                     (Lógica frontend)
+│   │           ├── Event listeners
+│   │           ├── Llamadas API (fetch)
+│   │           ├── Renderizado dinámico
+│   │           ├── Gráficos (Chart.js)
+│   │           └── Navegación tabs
+│   │
+│   ├── 🔧 BACKEND (src/backend/)          [Servidor - Node.js/Express]
+│   │   ├── server.js                      (Punto de entrada Express)
+│   │   │   ├── Configuración servidor
+│   │   │   ├── Middleware (CORS, JSON)
+│   │   │   └── Rutas API
+│   │   │
+│   │   ├── routes/                        (Definición de endpoints)
+│   │   │   └── (Rutas mapeadas en server.js)
+│   │   │
+│   │   ├── controllers/                   (Lógica de manejo requests)
+│   │   │   └── (Controla flujo de datos)
+│   │   │
+│   │   └── services/                      (Servicios de negocio)
+│   │       └── (Lógica reutilizable)
+│   │
+│   ├── 📊 DATA (src/data/)                [Almacenamiento de datos]
+│   │   ├── afps.json                      (Información de 4 AFPs)
+│   │   │   ├── AFP Habitat
+│   │   │   ├── AFP Provida
+│   │   │   ├── AFP Modelo
+│   │   │   ├── AFP Integra
+│   │   │   └── Cada una con: fondos A, B, C
+│   │   │
+│   │   └── isapres.json                   (Información de 4 Isapres)
+│   │       ├── Isapre Banmédica
+│   │       ├── Isapre Masvida
+│   │       ├── Isapre Cruces
+│   │       ├── Isapre Fonasa
+│   │       └── Cada una con: planes Basic, Preferente, Premium
+│   │
+│   └── 🧮 UTILS (src/utils/)              [Utilidades y cálculos]
+│       └── pensionCalculator.js           (Clase PensionCalculator)
+│           ├── calcularPension()
+│           ├── calcularPensionMensual()
+│           ├── compararAFPs()
+│           └── validarParametros()
+│
+├── ⚙️ CONFIGURACIÓN
+│   └── .claude/                           (Configuración Claude Code)
+│       └── (Archivos de configuración)
+│
+└── 📦 TEMPORAL
+    └── temp/                              (Archivos temporales)
+        └── (Cache, logs, etc.)
+
+================================================================================
+
+FLUJOS DE DATOS PRINCIPALES:
+
+┌─────────────────────────────────────────────────────────────────┐
+│                      FLUJO 1: CÁLCULO                          │
+├─────────────────────────────────────────────────────────────────┤
+│ Usuario → Completa Formulario                                  │
+│   ↓                                                             │
+│ Frontend (app.js) → Valida básicamente                         │
+│   ↓                                                             │
+│ Fetch → POST /api/calcular-pension                             │
+│   ↓                                                             │
+│ Backend (server.js) → Valida parámetros                        │
+│   ↓                                                             │
+│ PensionCalculator → Cálculo actuarial                          │
+│   ↓                                                             │
+│ Respuesta JSON → Retorna resultado                             │
+│   ↓                                                             │
+│ Frontend → Renderiza gráfico                                   │
+│   ↓                                                             │
+│ Usuario → Ve resultados y gráfico                              │
+└─────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────┐
+│                 FLUJO 2: CARGAR AFPs E ISAPRES                 │
+├─────────────────────────────────────────────────────────────────┤
+│ Usuario → Hace clic en tab "AFP e Isapres"                     │
+│   ↓                                                             │
+│ Frontend → GET /api/afps                                       │
+│ Frontend → GET /api/isapres (paralelo)                         │
+│   ↓                                                             │
+│ Backend → Lee afps.json e isapres.json                         │
+│   ↓                                                             │
+│ Retorna datos como JSON                                        │
+│   ↓                                                             │
+│ Frontend → Renderiza tarjetas                                  │
+│   ↓                                                             │
+│ Usuario → Explora instituciones y planes                       │
+└─────────────────────────────────────────────────────────────────┘
+
+================================================================================
+
+ARQUITECTURA EN CAPAS:
+
+                    ┌──────────────────────┐
+                    │   PRESENTACIÓN       │
+                    │  (Frontend HTML/CSS) │
+                    │   + JavaScript       │
+                    └──────────┬───────────┘
+                               ↓
+                    ┌──────────────────────┐
+                    │  LÓGICA DE NEGOCIO   │
+                    │  (Express Routes,    │
+                    │   Controllers,       │
+                    │   Services)          │
+                    └──────────┬───────────┘
+                               ↓
+                    ┌──────────────────────┐
+                    │  LÓGICA ESPECIALIZADA│
+                    │  (PensionCalculator) │
+                    └──────────┬───────────┘
+                               ↓
+                    ┌──────────────────────┐
+                    │  DATOS               │
+                    │  (JSON Files)        │
+                    │  afps.json           │
+                    │  isapres.json        │
+                    └──────────────────────┘
+
+================================================================================
+
+ENDPOINTS API:
+
+GET /api/afps
+├── Retorna: { afps: [...] }
+└── Uso: Llenar tab "AFP e Isapres"
+
+GET /api/isapres
+├── Retorna: { isapres: [...] }
+└── Uso: Llenar tab "AFP e Isapres"
+
+POST /api/calcular-pension
+├── Body: { salarioMensual, edadActual, edadJubilacion, ... }
+├── Retorna: { saldoFinal, pensionMensual, aportesRegimen, ... }
+└── Uso: Calcular pensión simulada
+
+POST /api/comparar-afps
+├── Body: { saldoFinal }
+├── Retorna: { afps: [...con comparativa...] }
+└── Uso: Comparar rendimiento entre AFPs
+
+GET /api/health
+├── Retorna: { status: "OK" }
+└── Uso: Verificar que servidor está activo
+
+================================================================================
+
+TECNOLOGÍAS:
+
+Frontend:
+  ✓ HTML5 (semántico)
+  ✓ CSS3 (Grid, Flexbox, custom properties)
+  ✓ JavaScript ES6+ (vanilla, sin bundler)
+  ✓ Chart.js (gráficos, vía CDN)
+  ✓ Fetch API (AJAX)
+
+Backend:
+  ✓ Node.js 16+
+  ✓ Express.js 4.18+
+  ✓ CORS 2.8+
+  ✓ ES Modules (import/export)
+
+Herramientas:
+  ✓ npm (gestor de paquetes)
+  ✓ VSCode (editor)
+  ✓ Claude Code (asistente IA)
+
+================================================================================
+
+CÓMO INICIAR:
+
+1. npm install          (instalar dependencias - YA COMPLETADO)
+2. npm run dev          (iniciar servidor con hot-reload)
+3. http://localhost:3000 (abrir en navegador)
+
+COMANDOS DISPONIBLES:
+
+npm install             → Instalar/actualizar dependencias
+npm run dev             → Iniciar servidor (desarrollo)
+npm start               → Iniciar servidor (producción)
+npm run build           → Compilar (si aplica)
+npm test                → Ejecutar tests (si existen)
+
+================================================================================
+
+CARACTERÍSTICAS PRINCIPALES:
+
+✅ Calculadora de Pensiones Actuarial
+   - Considera aporte obligatorio (10%)
+   - Descuenta comisiones de AFP (~0.74%)
+   - Incluye seguro de invalidez (~1.27%)
+   - Aplica rendimiento compuesto (6.5% promedio)
+   - Proyección año por año
+
+✅ Interfaz Accesible para Usuarios Mayores
+   - Texto grande (16px base, escalable)
+   - Colores de alto contraste
+   - Sin animaciones molestas
+   - Diseño minimalista e intuitivo
+   - Tema oscuro automático
+
+✅ Comparador de Instituciones
+   - 4 AFPs con detalles completos
+   - 4 Isapres con planes variados
+   - Información de contacto y websites
+   - Rentabilidades y comisiones
+
+✅ Información Educativa
+   - ¿Qué es AFP e Isapre?
+   - Fondos de inversión A, B, C, D, E
+   - Cálculo de aportes
+   - FAQ completo
+
+✅ Responsive Design
+   - Mobile: < 768px
+   - Tablet: 768px - 1024px
+   - Desktop: > 1024px
+   - Totalmente funcional en todos
+
+================================================================================
+
+PRÓXIMAS MEJORAS (Opcionales):
+
+1. Base de datos (MongoDB/PostgreSQL)
+2. Autenticación y perfil de usuario
+3. Guardar simulaciones
+4. Exportar a PDF
+5. Webscraping para actualizaciones automáticas
+6. API Key protection
+7. Más escenarios (retiro anticipado, cesantía)
+8. Integración con AFPs reales
+
+================================================================================
+
+Fecha de Creación: 31 de Mayo 2026
+Versión: 1.0.0
+Estado: Funcional y listo para producción
+Última Actualización: 31 de Mayo 2026
+
+================================================================================

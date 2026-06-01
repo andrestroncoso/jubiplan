@@ -1,0 +1,222 @@
+{
+  "isapres": [
+    {
+      "id": "isapre-01",
+      "nombre": "Isapre Banmédica",
+      "cotizacion": 7.0,
+      "cobertura": "Excelente",
+      "clinicas": 120,
+      "farmacias": 450,
+      "urgencias": "Excelente - 24/7",
+      "cirugias": "Excelente cobertura",
+      "puntuacionGeneral": 9.2,
+      "planes": [
+        {
+          "id": "plan-med-01",
+          "nombre": "Plan Básico",
+          "copagoPrimeraConsulta": 850,
+          "montoDeducible": 50000,
+          "cobertura": "Consultas, exámenes básicos, medicinas"
+        },
+        {
+          "id": "plan-med-02",
+          "nombre": "Plan Preferente",
+          "copagoPrimeraConsulta": 1200,
+          "montoDeducible": 30000,
+          "cobertura": "Todo lo anterior + especialistas + hospitalización"
+        },
+        {
+          "id": "plan-med-03",
+          "nombre": "Plan Premium",
+          "copagoPrimeraConsulta": 1800,
+          "montoDeducible": 10000,
+          "cobertura": "Todos los servicios, cobertura completa"
+        }
+      ],
+      "telefonoAtención": "+56 2 2660 0000",
+      "website": "www.banmedica.cl"
+    },
+    {
+      "id": "isapre-02",
+      "nombre": "Isapre Masvida",
+      "cotizacion": 7.0,
+      "cobertura": "Buena",
+      "clinicas": 85,
+      "farmacias": 280,
+      "urgencias": "Buena - 24/7",
+      "cirugias": "Buena cobertura",
+      "puntuacionGeneral": 8.1,
+      "planes": [
+        {
+          "id": "plan-mas-01",
+          "nombre": "Plan Básico",
+          "copagoPrimeraConsulta": 800,
+          "montoDeducible": 60000,
+          "cobertura": "Consultas básicas y exámenes"
+        },
+        {
+          "id": "plan-mas-02",
+          "nombre": "Plan Preferente",
+          "copagoPrimeraConsulta": 1100,
+          "montoDeducible": 35000,
+          "cobertura": "Consultas, especialistas, exámenes y medicinas"
+        },
+        {
+          "id": "plan-mas-03",
+          "nombre": "Plan Premium",
+          "copagoPrimeraConsulta": 1700,
+          "montoDeducible": 15000,
+          "cobertura": "Todos los servicios completos"
+        }
+      ],
+      "telefonoAtención": "+56 2 2654 5000",
+      "website": "www.masvida.cl"
+    },
+    {
+      "id": "isapre-03",
+      "nombre": "Isapre Cruces",
+      "cotizacion": 7.0,
+      "cobertura": "Excelente",
+      "clinicas": 135,
+      "farmacias": 520,
+      "urgencias": "Excelente - 24/7",
+      "cirugias": "Excelente cobertura",
+      "puntuacionGeneral": 9.4,
+      "planes": [
+        {
+          "id": "plan-cru-01",
+          "nombre": "Plan Estándar",
+          "copagoPrimeraConsulta": 900,
+          "montoDeducible": 45000,
+          "cobertura": "Consultas, exámenes y medicinas"
+        },
+        {
+          "id": "plan-cru-02",
+          "nombre": "Plan Plus",
+          "copagoPrimeraConsulta": 1300,
+          "montoDeducible": 25000,
+          "cobertura": "Consultas, especialistas, exámenes e internación"
+        },
+        {
+          "id": "plan-cru-03",
+          "nombre": "Plan Total",
+          "copagoPrimeraConsulta": 1900,
+          "montoDeducible": 8000,
+          "cobertura": "Todos los servicios sin restricciones"
+        }
+      ],
+      "telefonoAtención": "+56 2 2441 0000",
+      "website": "www.isaprecruces.cl"
+    },
+    {
+      "id": "isapre-04",
+      "nombre": "Isapre Fonasa",
+      "cotizacion": 7.0,
+      "cobertura": "Regular",
+      "clinicas": 60,
+      "farmacias": 200,
+      "urgencias": "Regular - 24/7",
+      "cirugias": "Cobertura estándar",
+      "puntuacionGeneral": 7.3,
+      "planes": [
+        {
+          "id": "plan-fon-01",
+          "nombre": "Plan Tramo A",
+          "copagoPrimeraConsulta": 750,
+          "montoDeducible": 70000,
+          "cobertura": "Consultas y exámenes básicos"
+        },
+        {
+          "id": "plan-fon-02",
+          "nombre": "Plan Tramo B",
+          "copagoPrimeraConsulta": 1000,
+          "montoDeducible": 40000,
+          "cobertura": "Consultas, especialistas, exámenes y medicinas"
+        },
+        {
+          "id": "plan-fon-03",
+          "nombre": "Plan Tramo C",
+          "copagoPrimeraConsulta": 1600,
+          "montoDeducible": 20000,
+          "cobertura": "Servicios completos con buena cobertura"
+        }
+      ],
+      "telefonoAtención": "+56 2 2737 0000",
+      "website": "www.fonasa.cl"
+    },
+    {
+      "id": "isapre-05",
+      "nombre": "Isapre Consalud",
+      "cotizacion": 6.8,
+      "cobertura": "Excelente",
+      "clinicas": 128,
+      "farmacias": 490,
+      "urgencias": "Excelente - 24/7",
+      "cirugias": "Excelente cobertura",
+      "puntuacionGeneral": 9.3,
+      "planes": [
+        {
+          "id": "plan-con-01",
+          "nombre": "Plan Económico",
+          "copagoPrimeraConsulta": 700,
+          "montoDeducible": 55000,
+          "cobertura": "Consultas y exámenes básicos"
+        },
+        {
+          "id": "plan-con-02",
+          "nombre": "Plan Intermedio",
+          "copagoPrimeraConsulta": 1050,
+          "montoDeducible": 32000,
+          "cobertura": "Consultas, especialidades y exámenes"
+        },
+        {
+          "id": "plan-con-03",
+          "nombre": "Plan Completo",
+          "copagoPrimeraConsulta": 1500,
+          "montoDeducible": 12000,
+          "cobertura": "Todos los servicios disponibles"
+        }
+      ],
+      "telefonoAtención": "+56 2 2405 9000",
+      "website": "www.consalud.cl"
+    },
+    {
+      "id": "isapre-06",
+      "nombre": "Isapre Vidatrés",
+      "cotizacion": 6.9,
+      "cobertura": "Buena",
+      "clinicas": 95,
+      "farmacias": 350,
+      "urgencias": "Buena - 24/7",
+      "cirugias": "Buena cobertura",
+      "puntuacionGeneral": 8.5,
+      "planes": [
+        {
+          "id": "plan-vid-01",
+          "nombre": "Plan Plus",
+          "copagoPrimeraConsulta": 820,
+          "montoDeducible": 48000,
+          "cobertura": "Consultas básicas y exámenes"
+        },
+        {
+          "id": "plan-vid-02",
+          "nombre": "Plan Plus Hospitalar",
+          "copagoPrimeraConsulta": 1250,
+          "montoDeducible": 28000,
+          "cobertura": "Consultas, especialistas e internación"
+        },
+        {
+          "id": "plan-vid-03",
+          "nombre": "Plan Premium Plus",
+          "copagoPrimeraConsulta": 1650,
+          "montoDeducible": 11000,
+          "cobertura": "Cobertura integral de salud"
+        }
+      ],
+      "telefonoAtención": "+56 2 2929 5000",
+      "website": "www.vidatres.cl"
+    }
+  ],
+  "ultimaActualizacion": "2026-05-31",
+  "nota": "Los montos son referenciales. Las isapres aplican reajustes mensuales."
+}

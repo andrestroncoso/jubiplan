@@ -1,0 +1,28 @@
+{
+  "name": "pension-calculator",
+  "version": "1.0.0",
+  "description": "Calculadora de pensiones y comparador de AFP e isapres en Chile",
+  "main": "src/backend/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/backend/server.js",
+    "dev": "node --watch src/backend/server.js",
+    "build": "echo 'Project ready'",
+    "test": "echo 'No tests configured yet'"
+  },
+  "keywords": [
+    "AFP",
+    "isapres",
+    "pensiones",
+    "Chile",
+    "calculadora"
+  ],
+  "author": "Pension Calculator Team",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "helmet": "^8.2.0"
+  }
+}

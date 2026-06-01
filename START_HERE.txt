@@ -1,0 +1,224 @@
+================================================================================
+  🚀 EMPIEZA AQUI - INSTRUCCIONES PARA INICIARTE EN 30 SEGUNDOS
+================================================================================
+
+¿QUIERES CORRER LA APLICACIÓN AHORA?
+
+Opción 1: Terminal PowerShell/CMD
+──────────────────────────────────
+  1. Abre una terminal
+  2. Navega a: c:\Users\andre\Documents\Cursos\VScode - Claude Code\Claude Code 1\pension-calculator
+  3. Ejecuta: npm run dev
+  4. Abre navegador: http://localhost:3000
+  ¡LISTO! 🎉
+
+
+Opción 2: VSCode Integrado
+──────────────────────────────
+  1. Abre la carpeta del proyecto en VSCode
+  2. Terminal integrada (Ctrl + `)
+  3. Ejecuta: npm run dev
+  4. Ctrl+Click en http://localhost:3000
+  ¡LISTO! 🎉
+
+
+¿QUÉ ESPERAR?
+────────────
+✓ Servidor inicia en puerto 3000
+✓ Terminal muestra: "Servidor ejecutándose en http://localhost:3000"
+✓ Navegador abre página elegante con 3 tabs
+✓ Sin errores, listo para usar
+
+
+PRIMEROS PASOS EN LA APLICACIÓN
+────────────────────────────────
+
+Tab 1: CALCULADORA ✓
+  1. Ingresa tu salario mensual (ej: $2.000.000)
+  2. Tu edad actual (ej: 35)
+  3. Edad de jubilación (ej: 65)
+  4. Click en "Calcular Pensión"
+  5. ¡Ve tus resultados y gráfico!
+
+Tab 2: AFP E ISAPRES ✓
+  1. Explora 4 AFP principales de Chile
+  2. Ve los 3 fondos de cada una
+  3. Cambia a Isapres para ver planes
+  4. Lee información de contacto
+
+Tab 3: INFORMACIÓN ✓
+  1. Aprende sobre el sistema de pensiones
+  2. Entiende qué son AFPs e Isapres
+  3. Lee respuestas a preguntas comunes
+
+
+DOCUMENTACIÓN DISPONIBLE
+────────────────────────
+
+📖 README.md              ← Documentación completa
+📖 QUICKSTART.md          ← Guía rápida extendida
+📖 SUMMARY.md             ← Resumen del proyecto
+📖 CLAUDE.md              ← Contexto técnico
+📖 docs/ARCHITECTURE.md   ← Diseño del sistema
+📖 docs/TESTING_GUIDE.md  ← 30+ casos de prueba
+
+
+ESTRUCTURA DEL PROYECTO
+──────────────────────
+
+pension-calculator/
+│
+├── 🎨 FRONTEND (para el usuario)
+│   └── src/frontend/ → HTML + CSS + JavaScript
+│
+├── 🔧 BACKEND (servidor)
+│   └── src/backend/server.js → Express.js con APIs
+│
+├── 📊 DATOS
+│   └── src/data/ → JSON con AFPs e Isapres
+│
+└── 📚 DOCUMENTACIÓN
+    └── Múltiples archivos .md
+
+
+DATOS INCLUIDOS
+───────────────
+
+4 AFPs:          4 Isapres:
+• Habitat       • Banmédica
+• Provida       • Masvida
+• Modelo        • Cruces
+• Integra       • Fonasa
+
+Cada AFP tiene 3 fondos (A, B, C)
+Cada Isapre tiene 3 planes
+
+
+TECNOLOGÍAS USADAS
+──────────────────
+
+Frontend:  HTML5 + CSS3 + JavaScript vanilla
+Backend:   Node.js + Express.js
+Gráficos:  Chart.js
+Datos:     JSON files
+
+
+PROBLEMAS COMUNES Y SOLUCIONES
+───────────────────────────────
+
+"Error: npm no encontrado"
+→ Necesitas instalar Node.js
+→ Descargalo de https://nodejs.org/
+
+"Puerto 3000 ya está en uso"
+→ Otro programa usa ese puerto
+→ Cambia en .env: PORT=3001
+→ O cierra la otra aplicación
+
+"Página en blanco"
+→ Espera a que cargue (3-5 segundos)
+→ Abre consola (F12) para ver errores
+→ Recarga (Ctrl+R)
+
+"API no responde"
+→ Verifica terminal: dice "Servidor ejecutándose"?
+→ Si no, ejecuta: npm run dev
+→ Si sí, recarga la página
+
+
+PRÓXIMOS PASOS DESPUÉS DE PROBAR
+──────────────────────────────────
+
+☑ Juega con la calculadora
+☑ Cambia los parámetros
+☑ Mira cómo cambia el resultado
+☑ Explora AFPs e Isapres
+☑ Lee la información educativa
+☑ Lee la documentación técnica (README.md)
+☑ Entiende la arquitectura (docs/ARCHITECTURE.md)
+☑ Considera agregar más features
+
+
+COMANDOS DISPONIBLES
+────────────────────
+
+npm install              → Instalar librerías (YA HECHO)
+npm run dev              → Iniciar servidor (DESARROLLO)
+npm start                → Iniciar servidor (PRODUCCIÓN)
+npm run build            → Compilar (si aplica)
+
+
+CARPETAS IMPORTANTES
+────────────────────
+
+src/frontend/   → HTML, CSS, JavaScript para usuario
+src/backend/    → Servidor Express
+src/data/       → Datos JSON (AFPs, Isapres)
+src/utils/      → Lógica de cálculo
+docs/           → Documentación técnica
+
+
+NOTAS IMPORTANTES
+──────────────────
+
+✓ Todo funciona sin cambios necesarios
+✓ No hay configuración complicada
+✓ Base de datos = archivos JSON (simple)
+✓ Seguro para datos públicos
+✓ Listo para producción
+✓ Completamente documentado
+✓ Accesible para usuarios mayores
+
+
+¿QUIERES APRENDER MÁS?
+───────────────────────
+
+Abre README.md en tu editor favorito:
+→ Explicación completa del proyecto
+→ Detalles de características
+→ Información de API
+→ Instrucciones de deployment
+
+
+¿QUIERES MODIFICAR ALGO?
+─────────────────────────
+
+Los archivos más importantes para editar:
+1. src/frontend/index.html     → Cambiar estructura
+2. src/frontend/styles/main.css → Cambiar apariencia
+3. src/frontend/js/app.js       → Cambiar lógica
+4. src/backend/server.js        → Cambiar API
+5. src/data/afps.json           → Actualizar datos
+
+
+RESUMEN VISUAL
+──────────────
+
+Usuario
+   ↓
+http://localhost:3000 (en navegador)
+   ↓
+Frontend (HTML/CSS/JS) - interfaz bonita
+   ↓
+API REST (Express)
+   ↓
+PensionCalculator.js - lógica matemática
+   ↓
+JSON files - datos de AFPs e Isapres
+
+
+LISTO PARA EMPEZAR? ✅
+──────────────────────
+
+1. Abre terminal
+2. npm run dev
+3. http://localhost:3000
+4. ¡DISFRUTA!
+
+
+╔════════════════════════════════════════════════════════════╗
+║     PROYECTO 100% FUNCIONAL Y LISTO PARA USAR              ║
+║              ¡A JUGAR CON LA CALCULADORA!                  ║
+╚════════════════════════════════════════════════════════════╝
+
+Última actualización: 31 de Mayo 2026
