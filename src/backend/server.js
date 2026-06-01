@@ -41,7 +41,15 @@ app.use(cors(corsOptions));
 
 app.use(express.json({ limit: '10kb' }));
 app.use(express.urlencoded({ extended: true, limit: '10kb' }));
-app.use(express.static(join(__dirname, '../frontend')));
+
+// Servir archivos estáticos
+const staticPath = join(__dirname, '../frontend');
+app.use(express.static(staticPath));
+
+// Ruta raíz - servir index.html
+app.get('/', (req, res) => {
+  res.sendFile(join(staticPath, 'index.html'));
+});
 
 const calculator = new PensionCalculator();
 
@@ -156,6 +164,11 @@ app.get('/api/status-datos', (req, res) => {
       nota: 'Los datos de isapres son referenciales. Verificar directamente con las isapres.'
     }
   });
+});
+
+// Fallback para SPA - sirve index.html para rutas no encontradas
+app.get('*', (req, res) => {
+  res.sendFile(join(staticPath, 'index.html'));
 });
 
 app.listen(port, () => {
