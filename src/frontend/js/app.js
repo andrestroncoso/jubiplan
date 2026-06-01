@@ -261,10 +261,7 @@ function mostrarAFPs() {
     return `
       <div class="institution-card ${esMejor ? 'best-institution' : ''}">
         <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 15px;">
-          <div style="display: flex; align-items: center; gap: 12px; flex: 1;">
-            <img src="${afp.logo}" alt="${sanitizeHTML(afp.nombre)}" style="width: 40px; height: 40px; border-radius: 6px; flex-shrink: 0; object-fit: contain; background: #f5f5f5;">
-            <div class="institution-name" style="margin-bottom: 0;">${sanitizeHTML(afp.nombre)}</div>
-          </div>
+          <div class="institution-name">${sanitizeHTML(afp.nombre)}</div>
           <div style="display: flex; gap: 8px; flex-direction: column; align-items: flex-end;">
             ${esMejor ? '<span style="background: linear-gradient(135deg, #00ff88, #00d9ff); color: #0a0e27; padding: 6px 12px; border-radius: 8px; font-weight: 700; font-size: 0.75rem;">🏆 MEJOR</span>' : ''}
             <span style="background: rgba(0, 217, 255, 0.2); color: var(--primary); padding: 6px 12px; border-radius: 8px; font-weight: 700; font-size: 0.8rem;">Puesto ${puesto}</span>
@@ -415,10 +412,7 @@ function mostrarIsapres(isapresOrdenadas = null) {
     return `
       <div class="institution-card ${esMejor ? 'best-institution' : ''}">
         <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 15px;">
-          <div style="display: flex; align-items: center; gap: 12px; flex: 1;">
-            <img src="${isapre.logo}" alt="${sanitizeHTML(isapre.nombre)}" style="width: 40px; height: 40px; border-radius: 6px; flex-shrink: 0; object-fit: contain; background: #f5f5f5;">
-            <div class="institution-name" style="margin-bottom: 0;">${sanitizeHTML(isapre.nombre)}</div>
-          </div>
+          <div class="institution-name">${sanitizeHTML(isapre.nombre)}</div>
           <div style="display: flex; gap: 8px; flex-direction: column; align-items: flex-end;">
             ${esMejor ? `<span style="background: linear-gradient(135deg, #00ff88, #00d9ff); color: #0a0e27; padding: 6px 12px; border-radius: 8px; font-weight: 700; font-size: 0.75rem;">${badgeText}</span>` : ''}
             <span style="background: rgba(0, 217, 255, 0.2); color: var(--primary); padding: 6px 12px; border-radius: 8px; font-weight: 700; font-size: 0.8rem;">Puesto ${puesto}</span>
