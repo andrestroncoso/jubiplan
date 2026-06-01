@@ -435,8 +435,8 @@ body {
 /* RESULTS */
 .results-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
   margin: 40px 0;
 }
 
@@ -476,7 +476,7 @@ body {
 }
 
 .result-value {
-  font-size: clamp(1.5rem, 3.8vw, 2.2rem);
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
   font-weight: 800;
   color: var(--primary);
   margin-bottom: 10px;
