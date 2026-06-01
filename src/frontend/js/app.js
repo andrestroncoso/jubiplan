@@ -589,19 +589,11 @@ async function loadHistorico() {
   const historicoContainer = document.getElementById('historicoContainer');
 
   try {
-    // Datos demo para esta iteración (en próxima integraremos API queAFP)
+    // Datos demo para esta iteración (en próxima integraremos API SPensiones)
     const historicoData = {
       afps: [
         {
-          nombre: 'AFP Modelo',
-          actual: 9.2,
-          promedio: 9.1,
-          minimo: 8.9,
-          maximo: 9.3,
-          datos: generarDatosDemo(30, 8.9, 9.3)
-        },
-        {
-          nombre: 'AFP Habitat',
+          nombre: 'Habitat',
           actual: 6.43,
           promedio: 6.4,
           minimo: 6.2,
@@ -609,12 +601,44 @@ async function loadHistorico() {
           datos: generarDatosDemo(30, 6.2, 6.6)
         },
         {
-          nombre: 'AFP Cuprum',
+          nombre: 'Provida',
+          actual: 7.15,
+          promedio: 7.1,
+          minimo: 6.9,
+          maximo: 7.4,
+          datos: generarDatosDemo(30, 6.9, 7.4)
+        },
+        {
+          nombre: 'Modelo',
+          actual: 9.2,
+          promedio: 9.1,
+          minimo: 8.9,
+          maximo: 9.3,
+          datos: generarDatosDemo(30, 8.9, 9.3)
+        },
+        {
+          nombre: 'Integra',
+          actual: 8.65,
+          promedio: 8.6,
+          minimo: 8.4,
+          maximo: 8.8,
+          datos: generarDatosDemo(30, 8.4, 8.8)
+        },
+        {
+          nombre: 'Cuprum',
           actual: 6.50,
           promedio: 6.5,
           minimo: 6.3,
           maximo: 6.7,
           datos: generarDatosDemo(30, 6.3, 6.7)
+        },
+        {
+          nombre: 'Sura',
+          actual: 7.80,
+          promedio: 7.75,
+          minimo: 7.5,
+          maximo: 8.0,
+          datos: generarDatosDemo(30, 7.5, 8.0)
         }
       ]
     };
