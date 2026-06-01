@@ -2,7 +2,7 @@
   "afps": [
     {
       "id": "afp-01",
-      "nombre": "AFP Habitat",
+      "nombre": "Habitat",
       "comisión": 0.74,
       "tasaSeguro": 1.27,
       "fondos": [
@@ -36,7 +36,7 @@
     },
     {
       "id": "afp-02",
-      "nombre": "AFP Provida",
+      "nombre": "Provida",
       "comisión": 0.74,
       "tasaSeguro": 1.27,
       "fondos": [
@@ -70,7 +70,7 @@
     },
     {
       "id": "afp-03",
-      "nombre": "AFP Modelo",
+      "nombre": "Modelo",
       "comisión": 0.70,
       "tasaSeguro": 1.25,
       "fondos": [
@@ -104,7 +104,7 @@
     },
     {
       "id": "afp-04",
-      "nombre": "AFP Integra",
+      "nombre": "Integra",
       "comisión": 0.75,
       "tasaSeguro": 1.28,
       "fondos": [
@@ -138,7 +138,7 @@
     },
     {
       "id": "afp-05",
-      "nombre": "AFP Cuprum",
+      "nombre": "Cuprum",
       "comisión": 0.72,
       "tasaSeguro": 1.26,
       "fondos": [
@@ -172,7 +172,7 @@
     },
     {
       "id": "afp-06",
-      "nombre": "AFP Sura",
+      "nombre": "Sura",
       "comisión": 0.73,
       "tasaSeguro": 1.29,
       "fondos": [

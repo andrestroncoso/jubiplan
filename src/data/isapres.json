@@ -2,7 +2,7 @@
   "isapres": [
     {
       "id": "isapre-01",
-      "nombre": "Isapre Banmédica",
+      "nombre": "Banmédica",
       "cotizacion": 7.0,
       "cobertura": "Excelente",
       "clinicas": 120,
@@ -38,7 +38,7 @@
     },
     {
       "id": "isapre-02",
-      "nombre": "Isapre Masvida",
+      "nombre": "Masvida",
       "cotizacion": 7.0,
       "cobertura": "Buena",
       "clinicas": 85,
@@ -74,7 +74,7 @@
     },
     {
       "id": "isapre-03",
-      "nombre": "Isapre Cruces",
+      "nombre": "Cruces",
       "cotizacion": 7.0,
       "cobertura": "Excelente",
       "clinicas": 135,
@@ -110,7 +110,7 @@
     },
     {
       "id": "isapre-04",
-      "nombre": "Isapre Fonasa",
+      "nombre": "Fonasa",
       "cotizacion": 7.0,
       "cobertura": "Regular",
       "clinicas": 60,
@@ -146,7 +146,7 @@
     },
     {
       "id": "isapre-05",
-      "nombre": "Isapre Consalud",
+      "nombre": "Consalud",
       "cotizacion": 6.8,
       "cobertura": "Excelente",
       "clinicas": 128,
@@ -182,7 +182,7 @@
     },
     {
       "id": "isapre-06",
-      "nombre": "Isapre Vidatrés",
+      "nombre": "Vidatrés",
       "cotizacion": 6.9,
       "cobertura": "Buena",
       "clinicas": 95,
