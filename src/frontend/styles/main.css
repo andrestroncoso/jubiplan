@@ -476,12 +476,13 @@ body {
 }
 
 .result-value {
-  font-size: clamp(1.75rem, 4.5vw, 2.5rem);
+  font-size: clamp(1.5rem, 3.8vw, 2.2rem);
   font-weight: 800;
   color: var(--primary);
   margin-bottom: 10px;
-  overflow-wrap: break-word;
-  word-break: break-word;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   line-height: 1.4;
   transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
