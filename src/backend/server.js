@@ -28,36 +28,14 @@ app.use(helmet({
   }
 }));
 
-// CORS: Configuración flexible según ambiente
-const corsOptions = {
-  origin: (origin, callback) => {
-    // Orígenes permitidos
-    const allowedOrigins = [
-      'https://jubiplan-chile.onrender.com',
-      'https://jubiplan.onrender.com',
-      'http://localhost:3000',
-      'http://localhost:5173',
-      'http://127.0.0.1:3000'
-    ];
-
-    // En desarrollo, permitir cualquier localhost
-    if (!origin || origin.includes('localhost') || origin.includes('127.0.0.1')) {
-      return callback(null, true);
-    }
-
-    // En producción, verificar lista específica
-    if (allowedOrigins.includes(origin)) {
-      return callback(null, true);
-    }
-
-    return callback(null, true); // Permitir todos en esta versión para debug
-  },
-  methods: ['GET', 'POST', 'OPTIONS'],
+// CORS: Permisivo para app educativa
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST', 'OPTIONS', 'PUT', 'DELETE'],
   credentials: false,
   optionsSuccessStatus: 200,
   allowedHeaders: ['Content-Type', 'Authorization']
-};
-app.use(cors(corsOptions));
+}));
 
 app.use(express.json({ limit: '10kb' }));
 app.use(express.urlencoded({ extended: true, limit: '10kb' }));
