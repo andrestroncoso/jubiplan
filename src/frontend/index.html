@@ -77,25 +77,25 @@
       <div class="calculator-wrapper">
         <div class="form-section">
           <h2>Simula tu Pensión</h2>
-          <p class="helper-text">Complete los siguientes datos para calcular su pensión estimada</p>
+          <p class="helper-text">Completa tus datos para conocer tu pensión estimada en Chile</p>
 
           <form id="pensionForm">
             <div class="form-group">
               <label for="salarioMensual">
-                <span class="label-text">Salario Mensual Actual (CLP)</span>
-                <span class="help-icon" title="Ingrese su salario bruto mensual">?</span>
+                <span class="label-text">Tu salario mensual</span>
+                <span class="help-icon" title="Monto bruto (sin descuentos)">?</span>
               </label>
               <input type="number" id="salarioMensual" min="0" step="1000" value="2000000" required>
-              <span class="input-hint">Ejemplo: $2.000.000</span>
+              <span class="input-hint">Monto bruto: $2.000.000</span>
             </div>
 
             <div class="form-row">
               <div class="form-group">
                 <label for="edadActual">
-                  <span class="label-text">Edad Actual</span>
-                  <span class="help-icon" title="Su edad en años">?</span>
+                  <span class="label-text">Tu edad actual</span>
+                  <span class="help-icon" title="Edad en años">?</span>
                 </label>
-                <input type="number" id="edadActual" min="18" max="100" value="35" required>
+                <input type="number" id="edadActual" min="18" max="100" value="35" required placeholder="35">
               </div>
 
               <div class="form-group">
@@ -110,11 +110,11 @@
             <div class="form-row">
               <div class="form-group">
                 <label for="saldoActual">
-                  <span class="label-text">Saldo Actual en AFP (CLP)</span>
-                  <span class="help-icon" title="Saldo que tiene acumulado actualmente">?</span>
+                  <span class="label-text">Tu saldo actual en AFP</span>
+                  <span class="help-icon" title="Consulta tu app o portal de la AFP">?</span>
                 </label>
-                <input type="number" id="saldoActual" min="0" step="10000" value="5000000">
-                <span class="input-hint">Puede consultarlo en su AFP</span>
+                <input type="number" id="saldoActual" min="0" step="10000" value="5000000" placeholder="5000000">
+                <span class="input-hint">Verifica en tu portal de AFP</span>
               </div>
 
               <div class="form-group">
@@ -135,27 +135,27 @@
 
           <div class="results-grid">
             <div class="result-card">
-              <div class="result-label">Pensión Mensual Estimada</div>
+              <div class="result-label">Pensión mensual estimada</div>
               <div class="result-value" id="pensionMensual">$0</div>
-              <div class="result-note">A partir de los 65 años</div>
+              <div class="result-note">Desde tu edad de jubilación</div>
             </div>
 
             <div class="result-card">
-              <div class="result-label">Saldo Acumulado al Retiro</div>
+              <div class="result-label">Saldo al jubilarte</div>
               <div class="result-value" id="saldoFinal">$0</div>
-              <div class="result-note">Capital disponible</div>
+              <div class="result-note">Lo que tendrás acumulado</div>
             </div>
 
             <div class="result-card">
-              <div class="result-label">Total Aportado</div>
+              <div class="result-label">Total que aportarás</div>
               <div class="result-value" id="totalAportado">$0</div>
-              <div class="result-note">Hasta la jubilación</div>
+              <div class="result-note">10% de tu salario</div>
             </div>
 
             <div class="result-card">
-              <div class="result-label">Total en Comisiones</div>
+              <div class="result-label">Comisiones totales</div>
               <div class="result-value error" id="totalComisiones">$0</div>
-              <div class="result-note">Costo de administración</div>
+              <div class="result-note">Lo que cobra la AFP</div>
             </div>
           </div>
 

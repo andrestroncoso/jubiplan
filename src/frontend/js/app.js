@@ -100,12 +100,25 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
 
+  const salarioMensual = parseFloat(document.getElementById('salarioMensual').value);
+  const edadActual = parseInt(document.getElementById('edadActual').value);
+  const edadJubilacion = parseInt(document.getElementById('edadJubilacion').value);
+  const saldoActual = parseFloat(document.getElementById('saldoActual').value);
+  const aportesAdicionales = parseFloat(document.getElementById('aportesAdicionales').value) || 0;
+
+  // Validación en cliente
+  const validacionError = validarFormulario(salarioMensual, edadActual, edadJubilacion, saldoActual);
+  if (validacionError) {
+    mostrarError(validacionError);
+    return;
+  }
+
   const formData = {
-    salarioMensual: parseFloat(document.getElementById('salarioMensual').value),
-    edadActual: parseInt(document.getElementById('edadActual').value),
-    edadJubilacion: parseInt(document.getElementById('edadJubilacion').value),
-    saldoActual: parseFloat(document.getElementById('saldoActual').value),
-    aportesAdicionales: parseFloat(document.getElementById('aportesAdicionales').value),
+    salarioMensual,
+    edadActual,
+    edadJubilacion,
+    saldoActual,
+    aportesAdicionales,
     tasaRendimiento: 0.065,
     comisionAfp: 0.0074,
     tasaSeguro: 0.0127
@@ -113,6 +126,7 @@ form.addEventListener('submit', async (e) => {
 
   loadingSpinner.style.display = 'flex';
   resultsSection.style.display = 'none';
+  limpiarError();
 
   try {
     const response = await fetch(`${API_BASE}/calcular-pension`, {
@@ -121,17 +135,59 @@ form.addEventListener('submit', async (e) => {
       body: JSON.stringify(formData)
     });
 
-    if (!response.ok) throw new Error('Error en el cálculo');
+    if (!response.status === 200) {
+      const errorData = await response.json();
+      throw new Error(errorData.mensaje || 'Error en el cálculo');
+    }
 
     const resultado = await response.json();
     mostrarResultados(resultado);
   } catch (error) {
     console.error('Error:', error);
-    alert('Error al calcular la pensión. Verifica los datos e intenta nuevamente.');
+    mostrarError('No se pudo calcular la pensión. Verifica tu conexión e intenta nuevamente.');
   } finally {
     loadingSpinner.style.display = 'none';
   }
 });
+
+function validarFormulario(salario, edadActual, edadJubilacion, saldo) {
+  if (!salario || salario <= 0) return 'Ingresa un salario válido (mayor a $0)';
+  if (!edadActual || edadActual < 18 || edadActual > 100) return 'Edad actual debe estar entre 18 y 100 años';
+  if (!edadJubilacion || edadJubilacion < 55 || edadJubilacion > 100) return 'Edad de jubilación debe estar entre 55 y 100 años';
+  if (edadJubilacion <= edadActual) return 'La edad de jubilación debe ser mayor que la edad actual';
+  if (saldo < 0) return 'El saldo no puede ser negativo';
+  return null;
+}
+
+function mostrarError(mensaje) {
+  let errorDiv = document.getElementById('errorMessage');
+  if (!errorDiv) {
+    errorDiv = document.createElement('div');
+    errorDiv.id = 'errorMessage';
+    errorDiv.style.cssText = `
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid var(--danger);
+      border-radius: var(--border-radius);
+      padding: 16px 20px;
+      color: var(--danger);
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 500;
+    `;
+    form.parentNode.insertBefore(errorDiv, form);
+  }
+  errorDiv.textContent = '⚠️ ' + mensaje;
+  errorDiv.style.display = 'block';
+}
+
+function limpiarError() {
+  const errorDiv = document.getElementById('errorMessage');
+  if (errorDiv) {
+    errorDiv.style.display = 'none';
+  }
+}
 
 function mostrarResultados(resultado) {
   document.getElementById('pensionMensual').textContent = formatearMoneda(resultado.pensionMensualEstimada);
@@ -140,6 +196,7 @@ function mostrarResultados(resultado) {
   document.getElementById('totalComisiones').textContent = formatearMoneda(resultado.totalComisiones);
 
   crearGrafico(resultado.aportesRegimen);
+  limpiarError();
   resultsSection.style.display = 'block';
   resultsSection.scrollIntoView({ behavior: 'smooth' });
 }
