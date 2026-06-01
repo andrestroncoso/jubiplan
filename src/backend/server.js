@@ -42,16 +42,8 @@ app.use(cors(corsOptions));
 app.use(express.json({ limit: '10kb' }));
 app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 
-// Servir archivos estáticos
-const staticPath = join(__dirname, '../frontend');
-app.use(express.static(staticPath));
-
-// Ruta raíz - servir index.html
-app.get('/', (req, res) => {
-  res.sendFile(join(staticPath, 'index.html'));
-});
-
 const calculator = new PensionCalculator();
+const staticPath = join(__dirname, '../frontend');
 
 // Variables para almacenar datos en memoria (con enriquecimiento SVS)
 let datosAFPsEnriquecidos = null;
@@ -166,7 +158,15 @@ app.get('/api/status-datos', (req, res) => {
   });
 });
 
-// Fallback para SPA - sirve index.html para rutas no encontradas
+// Servir archivos estáticos DESPUÉS de todas las rutas de API
+app.use(express.static(staticPath));
+
+// Ruta raíz explícita
+app.get('/', (req, res) => {
+  res.sendFile(join(staticPath, 'index.html'));
+});
+
+// Fallback para SPA - sirve index.html para rutas no encontradas (al final)
 app.get('*', (req, res) => {
   res.sendFile(join(staticPath, 'index.html'));
 });
