@@ -152,6 +152,6 @@ http://localhost:3000
 
 ---
 
-**Última actualización**: 31 de Mayo 2026
+**Última actualización**: 1 de Junio 2026
 **Versión**: 1.0.0
 **Estado**: Funcional y listo para usar
