@@ -262,7 +262,7 @@ function mostrarAFPs() {
       <div class="institution-card ${esMejor ? 'best-institution' : ''}">
         <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 15px;">
           <div style="display: flex; align-items: center; gap: 12px; flex: 1;">
-            <img src="assets/logos/${afp.logo}" alt="${sanitizeHTML(afp.nombre)}" style="width: 40px; height: 40px; border-radius: 6px; flex-shrink: 0;">
+            <img src="${afp.logo}" alt="${sanitizeHTML(afp.nombre)}" style="width: 40px; height: 40px; border-radius: 6px; flex-shrink: 0; object-fit: contain;">
             <div class="institution-name" style="margin-bottom: 0;">${sanitizeHTML(afp.nombre)}</div>
           </div>
           <div style="display: flex; gap: 8px; flex-direction: column; align-items: flex-end;">
@@ -416,7 +416,7 @@ function mostrarIsapres(isapresOrdenadas = null) {
       <div class="institution-card ${esMejor ? 'best-institution' : ''}">
         <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 15px;">
           <div style="display: flex; align-items: center; gap: 12px; flex: 1;">
-            <img src="assets/logos/${isapre.logo}" alt="${sanitizeHTML(isapre.nombre)}" style="width: 40px; height: 40px; border-radius: 6px; flex-shrink: 0;">
+            <img src="${isapre.logo}" alt="${sanitizeHTML(isapre.nombre)}" style="width: 40px; height: 40px; border-radius: 6px; flex-shrink: 0; object-fit: contain;">
             <div class="institution-name" style="margin-bottom: 0;">${sanitizeHTML(isapre.nombre)}</div>
           </div>
           <div style="display: flex; gap: 8px; flex-direction: column; align-items: flex-end;">

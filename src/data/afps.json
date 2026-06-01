@@ -3,7 +3,7 @@
     {
       "id": "afp-01",
       "nombre": "Habitat",
-      "logo": "habitat-logo.svg",
+      "logo": "https://www.afphabitat.cl/images/logo-habitat.svg",
       "comisión": 0.74,
       "tasaSeguro": 1.27,
       "fondos": [
@@ -38,7 +38,7 @@
     {
       "id": "afp-02",
       "nombre": "Provida",
-      "logo": "provida-logo.svg",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/e/e3/Logotipo_AFP_ProVida.svg",
       "comisión": 0.74,
       "tasaSeguro": 1.27,
       "fondos": [
@@ -73,7 +73,7 @@
     {
       "id": "afp-03",
       "nombre": "Modelo",
-      "logo": "modelo-logo.svg",
+      "logo": "https://www.afpmodelo.cl/images/logo-modelo.svg",
       "comisión": 0.70,
       "tasaSeguro": 1.25,
       "fondos": [
@@ -108,7 +108,7 @@
     {
       "id": "afp-04",
       "nombre": "Integra",
-      "logo": "integra-logo.svg",
+      "logo": "https://www.integra.cl/images/logo-integra.svg",
       "comisión": 0.75,
       "tasaSeguro": 1.28,
       "fondos": [
@@ -143,7 +143,7 @@
     {
       "id": "afp-05",
       "nombre": "Cuprum",
-      "logo": "cuprum-logo.svg",
+      "logo": "https://www.cuprum.cl/images/logo-cuprum.svg",
       "comisión": 0.72,
       "tasaSeguro": 1.26,
       "fondos": [
@@ -178,7 +178,7 @@
     {
       "id": "afp-06",
       "nombre": "Sura",
-      "logo": "sura-logo.svg",
+      "logo": "https://www.afpcapital.cl/images/logo-afpcapital.svg",
       "comisión": 0.73,
       "tasaSeguro": 1.29,
       "fondos": [
