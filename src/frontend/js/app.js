@@ -209,6 +209,7 @@ function crearGrafico(datos) {
     pensionChart.destroy();
   }
 
+  const isMobile = esMovil();
   const labels = datos.map(d => `Año ${d.año}`);
   const values = datos.map(d => d.saldoAcumulado);
 
@@ -219,16 +220,16 @@ function crearGrafico(datos) {
       datasets: [{
         label: 'Saldo Acumulado (CLP)',
         data: values,
-        borderColor: '#2563eb',
-        backgroundColor: 'rgba(37, 99, 235, 0.1)',
-        borderWidth: 3,
+        borderColor: '#F59E0B',
+        backgroundColor: 'rgba(245, 158, 11, 0.1)',
+        borderWidth: isMobile ? 2 : 3,
         tension: 0.4,
         fill: true,
-        pointBackgroundColor: '#2563eb',
+        pointBackgroundColor: '#F59E0B',
         pointBorderColor: '#fff',
-        pointBorderWidth: 2,
-        pointRadius: 4,
-        pointHoverRadius: 6
+        pointBorderWidth: isMobile ? 1 : 2,
+        pointRadius: isMobile ? 2 : 4,
+        pointHoverRadius: isMobile ? 3 : 6
       }]
     },
     options: {
@@ -237,8 +238,9 @@ function crearGrafico(datos) {
       plugins: {
         legend: {
           labels: {
-            font: { size: 12 },
-            usePointStyle: true
+            font: { size: isMobile ? 10 : 12 },
+            usePointStyle: true,
+            padding: isMobile ? 8 : 12
           }
         }
       },
@@ -246,7 +248,13 @@ function crearGrafico(datos) {
         y: {
           beginAtZero: true,
           ticks: {
-            callback: (value) => formatearMonedaCorta(value)
+            callback: (value) => formatearMonedaCorta(value),
+            font: { size: isMobile ? 9 : 11 }
+          }
+        },
+        x: {
+          ticks: {
+            font: { size: isMobile ? 8 : 10 }
           }
         }
       }
@@ -666,6 +674,11 @@ async function loadHistorico() {
   }
 }
 
+// Detectar si es dispositivo móvil
+function esMovil() {
+  return window.innerWidth < 768;
+}
+
 // Generar datos demo para gráfico
 function generarDatosDemo(dias, minimo, maximo) {
   const datos = [];
@@ -683,6 +696,14 @@ function generarDatosDemo(dias, minimo, maximo) {
   }
 
   return datos;
+}
+
+// Filtrar datos para móvil (mostrar cada 5 días)
+function filtrarDatosMovil(datos) {
+  if (!esMovil() || datos.length <= 10) return datos;
+
+  // Mostrar cada 5 días en móvil
+  return datos.filter((_, i) => i % 5 === 0 || i === datos.length - 1);
 }
 
 // Mostrar histórico con gráfico
@@ -746,8 +767,10 @@ function crearGraficoHistorico(afp, index) {
     return;
   }
 
-  const labels = afp.datos.map(d => d.fecha);
-  const values = afp.datos.map(d => d.rentabilidad);
+  const isMobile = esMovil();
+  const datosFiltrados = isMobile ? filtrarDatosMovil(afp.datos) : afp.datos;
+  const labels = datosFiltrados.map(d => d.fecha);
+  const values = datosFiltrados.map(d => d.rentabilidad);
 
   // Destruir gráfico anterior si existe
   if (window[`historicoChart${index}`]) {
@@ -780,14 +803,14 @@ function crearGraficoHistorico(afp, index) {
           data: values,
           borderColor: borderColor,
           backgroundColor: backgroundColor,
-          borderWidth: 2.5,
+          borderWidth: isMobile ? 1.5 : 2.5,
           tension: 0.3,
           fill: true,
           pointBackgroundColor: borderColor,
           pointBorderColor: '#fff',
-          pointBorderWidth: 1.5,
-          pointRadius: 3,
-          pointHoverRadius: 5
+          pointBorderWidth: isMobile ? 0.5 : 1.5,
+          pointRadius: isMobile ? 1.5 : 3,
+          pointHoverRadius: isMobile ? 2.5 : 5
         }]
       },
       options: {
@@ -802,17 +825,17 @@ function crearGraficoHistorico(afp, index) {
             display: true,
             position: 'bottom',
             labels: {
-              font: { size: 11, weight: 'bold' },
+              font: { size: isMobile ? 8 : 11, weight: 'bold' },
               usePointStyle: true,
               color: '#8892b0',
-              padding: 15
+              padding: isMobile ? 8 : 15
             }
           },
           tooltip: {
             backgroundColor: 'rgba(0, 0, 0, 0.8)',
-            padding: 12,
-            titleFont: { size: 12, weight: 'bold' },
-            bodyFont: { size: 11 },
+            padding: isMobile ? 8 : 12,
+            titleFont: { size: isMobile ? 10 : 12, weight: 'bold' },
+            bodyFont: { size: isMobile ? 9 : 11 },
             borderColor: borderColor,
             borderWidth: 1
           }
@@ -823,7 +846,7 @@ function crearGraficoHistorico(afp, index) {
             ticks: {
               callback: (value) => value.toFixed(2) + '%',
               color: '#8892b0',
-              font: { size: 10 }
+              font: { size: isMobile ? 7 : 10 }
             },
             grid: {
               color: 'rgba(139, 146, 176, 0.1)',
@@ -833,9 +856,9 @@ function crearGraficoHistorico(afp, index) {
           x: {
             ticks: {
               color: '#8892b0',
-              maxRotation: 45,
-              minRotation: 0,
-              font: { size: 9 }
+              maxRotation: isMobile ? 90 : 45,
+              minRotation: isMobile ? 90 : 0,
+              font: { size: isMobile ? 6 : 9 }
             },
             grid: {
               color: 'rgba(139, 146, 176, 0.1)',
