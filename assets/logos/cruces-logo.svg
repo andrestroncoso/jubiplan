@@ -1,0 +1,12 @@
+<svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .cruces-line { stroke: #DC2626; stroke-width: 4; }
+      .cruces-text { font-family: Arial, sans-serif; font-weight: bold; font-size: 28px; fill: #DC2626; }
+    </style>
+  </defs>
+  <rect width="200" height="100" fill="white"/>
+  <line class="cruces-line" x1="40" y1="30" x2="40" y2="70"/>
+  <line class="cruces-line" x1="20" y1="50" x2="60" y2="50"/>
+  <text class="cruces-text" x="90" y="65">+</text>
+</svg>

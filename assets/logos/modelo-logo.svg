@@ -1,0 +1,14 @@
+<svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .modelo-bar { fill: #4CAF50; }
+      .modelo-text { font-family: Arial, sans-serif; font-weight: bold; font-size: 32px; fill: #4CAF50; }
+    </style>
+  </defs>
+  <rect width="200" height="100" fill="white"/>
+  <rect class="modelo-bar" x="20" y="60" width="10" height="25"/>
+  <rect class="modelo-bar" x="35" y="45" width="10" height="40"/>
+  <rect class="modelo-bar" x="50" y="30" width="10" height="55"/>
+  <rect class="modelo-bar" x="65" y="50" width="10" height="35"/>
+  <text class="modelo-text" x="100" y="65">M</text>
+</svg>

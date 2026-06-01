@@ -1,0 +1,14 @@
+<svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .integra-circle { fill: #9C27B0; }
+      .integra-line { stroke: #9C27B0; stroke-width: 3; }
+      .integra-text { font-family: Arial, sans-serif; font-weight: bold; font-size: 28px; fill: #9C27B0; }
+    </style>
+  </defs>
+  <rect width="200" height="100" fill="white"/>
+  <circle class="integra-circle" cx="30" cy="50" r="10"/>
+  <circle class="integra-circle" cx="50" cy="50" r="10"/>
+  <line class="integra-line" x1="40" y1="50" x2="40" y2="50"/>
+  <text class="integra-text" x="90" y="65">I</text>
+</svg>

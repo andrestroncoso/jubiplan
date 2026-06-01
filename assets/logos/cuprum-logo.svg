@@ -1,0 +1,12 @@
+<svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .cuprum-circle { fill: #F39C12; }
+      .cuprum-text { font-family: Arial, sans-serif; font-weight: bold; font-size: 28px; fill: #F39C12; }
+    </style>
+  </defs>
+  <rect width="200" height="100" fill="white"/>
+  <circle class="cuprum-circle" cx="40" cy="50" r="18"/>
+  <path class="cuprum-circle" d="M 28 70 L 22 80 L 35 75 L 45 82 L 42 70 Z"/>
+  <text class="cuprum-text" x="95" y="65">C</text>
+</svg>

@@ -1,0 +1,13 @@
+<svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .vidatres-strand { fill: #14B8A6; }
+      .vidatres-text { font-family: Arial, sans-serif; font-weight: bold; font-size: 20px; fill: #14B8A6; }
+    </style>
+  </defs>
+  <rect width="200" height="100" fill="white"/>
+  <path class="vidatres-strand" d="M 25 65 Q 35 35 45 55 Q 55 35 65 65" stroke="#14B8A6" stroke-width="3" fill="none"/>
+  <circle class="vidatres-strand" cx="25" cy="65" r="3"/>
+  <circle class="vidatres-strand" cx="65" cy="65" r="3"/>
+  <text class="vidatres-text" x="90" y="62">VT</text>
+</svg>

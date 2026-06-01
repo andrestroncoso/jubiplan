@@ -1,0 +1,11 @@
+<svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .masvida-heart { fill: #E91E63; }
+      .masvida-text { font-family: Arial, sans-serif; font-weight: bold; font-size: 20px; fill: #E91E63; }
+    </style>
+  </defs>
+  <rect width="200" height="100" fill="white"/>
+  <path class="masvida-heart" d="M 50 55 C 50 40 40 35 35 35 C 28 35 25 42 25 48 C 25 58 35 68 50 78 C 65 68 75 58 75 48 C 75 42 72 35 65 35 C 60 35 50 40 50 55 Z"/>
+  <text class="masvida-text" x="90" y="62">MV</text>
+</svg>

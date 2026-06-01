@@ -1,0 +1,12 @@
+<svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .habitat-text { font-family: Arial, sans-serif; font-weight: bold; font-size: 28px; fill: #00509e; }
+      .habitat-symbol { fill: #00509e; }
+    </style>
+  </defs>
+  <rect width="200" height="100" fill="white"/>
+  <path class="habitat-symbol" d="M 30 70 L 50 40 L 70 70 Z"/>
+  <rect class="habitat-symbol" x="35" y="70" width="30" height="20" rx="2"/>
+  <text class="habitat-text" x="90" y="65">H</text>
+</svg>

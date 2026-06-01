@@ -1,0 +1,12 @@
+<svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .consalud-circle { fill: #06B6D4; }
+      .consalud-text { font-family: Arial, sans-serif; font-weight: bold; font-size: 20px; fill: #06B6D4; }
+    </style>
+  </defs>
+  <rect width="200" height="100" fill="white"/>
+  <circle class="consalud-circle" cx="40" cy="40" r="12"/>
+  <path class="consalud-circle" d="M 25 65 Q 40 72 55 65"/>
+  <text class="consalud-text" x="90" y="62">CS</text>
+</svg>
