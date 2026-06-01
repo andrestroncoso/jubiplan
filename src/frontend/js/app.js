@@ -1,4 +1,5 @@
-const API_BASE = 'http://localhost:3000/api';
+// Construir API_BASE dinámicamente basado en el host actual
+const API_BASE = `${window.location.protocol}//${window.location.host}/api`;
 let pensionChart = null;
 let afpsData = null;
 let isapresData = null;
