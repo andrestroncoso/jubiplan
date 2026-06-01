@@ -1,0 +1,21 @@
+# Railway Configuration
+# Configuración automática para desplegar en Railway
+
+[build]
+# Comando para instalar dependencias
+builder = "nixpacks"
+
+[deploy]
+# Comando para ejecutar la aplicación
+startCommand = "npm start"
+# Puerto donde escucha la app
+port = 3000
+# Healthcheck para verificar que la app está corriendo
+healthcheckPath = "/api/health"
+healthcheckTimeout = 30
+
+# Variables de ambiente automáticas
+[env]
+NODE_ENV = "production"
+PORT = "3000"
+ALLOWED_ORIGINS = "$RAILWAY_STATIC_URL"
