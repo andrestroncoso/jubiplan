@@ -572,18 +572,29 @@ function mostrarIsapres(isapresOrdenadas = null) {
 // Cargar indicadores del día (UF y Dólar)
 async function cargarIndicadoresDelDia() {
   try {
-    // Obtener indicadores reales de Mindicador
-    const response = await fetch(`${API_BASE}/indicadores-diarios`);
-    const data = await response.json();
-
     const ufValue = document.getElementById('ufValue');
     const dolarValue = document.getElementById('dolarValue');
     const indicadoresDiv = document.getElementById('indicadoresDelDia');
     const indicadoresLabel = document.getElementById('indicadoresLabel');
 
+    // Show loading state
+    if (indicadoresDiv) {
+      indicadoresDiv.style.display = 'flex';
+      indicadoresDiv.classList.add('loading-pulse');
+    }
+    if (ufValue && dolarValue) {
+      ufValue.textContent = '...';
+      dolarValue.textContent = '...';
+    }
+
+    // Obtener indicadores reales de Mindicador
+    const response = await fetch(`${API_BASE}/indicadores-diarios`);
+    const data = await response.json();
+
     if (ufValue && dolarValue && indicadoresDiv) {
       ufValue.textContent = formatearMoneda(data.uf);
       dolarValue.textContent = formatearMoneda(data.dolar);
+      indicadoresDiv.classList.remove('loading-pulse');
 
       // Mostrar fecha de actualización
       if (indicadoresLabel) {
@@ -600,11 +611,15 @@ async function cargarIndicadoresDelDia() {
         indicadoresLabel.style.color = 'var(--text-tertiary)';
         indicadoresLabel.style.marginTop = '8px';
       }
-
-      indicadoresDiv.style.display = 'flex';
     }
   } catch (error) {
     console.error('Error cargando indicadores:', error);
+    const ufValue = document.getElementById('ufValue');
+    const dolarValue = document.getElementById('dolarValue');
+    if (ufValue && dolarValue) {
+      ufValue.textContent = '-';
+      dolarValue.textContent = '-';
+    }
   }
 }
 
