@@ -5,6 +5,36 @@ let afpsData = null;
 let isapresData = null;
 let historicoChart = null;
 
+// Tracking de última actualización de datos
+let ultimaActualizacionIndicadores = null;
+let ultimaActualizacionAfps = null;
+
+// Función para actualizar fecha en footer
+function actualizarFechaFooter() {
+  const ultimaActualizacion = document.getElementById('ultimaActualizacion');
+  if (!ultimaActualizacion) return;
+
+  // Usar la fecha más reciente entre indicadores y AFPs
+  let fechaMasReciente = ultimaActualizacionIndicadores || ultimaActualizacionAfps;
+
+  if (!fechaMasReciente) {
+    ultimaActualizacion.textContent = 'Última actualización: Cargando datos...';
+    return;
+  }
+
+  const fecha = new Date(fechaMasReciente);
+  const fechaFormato = fecha.toLocaleDateString('es-CL', {
+    day: '2-digit',
+    month: 'long',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit'
+  });
+
+  ultimaActualizacion.textContent = `Última actualización: ${fechaFormato}`;
+}
+
 // Security: Sanitizar HTML de datos untrusted
 function sanitizeHTML(str) {
   const div = document.createElement('div');
@@ -274,15 +304,23 @@ async function loadAFPsAndIsapres() {
   if (afpsData && isapresData) return;
 
   try {
-    const [afpsRes, isapresRes] = await Promise.all([
+    const [afpsRes, isapresRes, afpsRealistasRes] = await Promise.all([
       fetch(`${API_BASE}/afps`),
-      fetch(`${API_BASE}/isapres`)
+      fetch(`${API_BASE}/isapres`),
+      fetch(`${API_BASE}/afps-realistas`)
     ]);
 
     if (!afpsRes.ok || !isapresRes.ok) throw new Error('Error cargando datos');
 
     afpsData = await afpsRes.json();
     isapresData = await isapresRes.json();
+
+    // Capturar fecha de actualización de AFPs realistas
+    if (afpsRealistasRes.ok) {
+      const afpsRealistas = await afpsRealistasRes.json();
+      ultimaActualizacionAfps = afpsRealistas.fecha_actualizacion;
+      actualizarFechaFooter();
+    }
 
     mostrarAFPs();
     mostrarIsapres();
@@ -595,6 +633,10 @@ async function cargarIndicadoresDelDia() {
       ufValue.textContent = formatearMoneda(data.uf);
       dolarValue.textContent = formatearMoneda(data.dolar);
       indicadoresDiv.classList.remove('loading-pulse');
+
+      // Guardar fecha de última actualización
+      ultimaActualizacionIndicadores = data.fecha_actualizacion;
+      actualizarFechaFooter();
 
       // Mostrar fecha de actualización
       if (indicadoresLabel) {
