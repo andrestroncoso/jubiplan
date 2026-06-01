@@ -28,29 +28,30 @@ app.use(helmet({
   }
 }));
 
-// CORS: Configuración segura
-const getAllowedOrigins = () => {
-  if (process.env.NODE_ENV === 'production') {
-    // En producción, permitir el dominio actual de Render + ALLOWED_ORIGINS configurado
+// CORS: Configuración flexible según ambiente
+const corsOptions = {
+  origin: (origin, callback) => {
+    // Orígenes permitidos
     const allowedOrigins = [
       'https://jubiplan-chile.onrender.com',
-      'https://jubiplan.onrender.com'
+      'https://jubiplan.onrender.com',
+      'http://localhost:3000',
+      'http://localhost:5173',
+      'http://127.0.0.1:3000'
     ];
 
-    // Agregar cualquier origen adicional configurado
-    if (process.env.ALLOWED_ORIGINS) {
-      allowedOrigins.push(...process.env.ALLOWED_ORIGINS.split(',').map(o => o.trim()));
+    // En desarrollo, permitir cualquier localhost
+    if (!origin || origin.includes('localhost') || origin.includes('127.0.0.1')) {
+      return callback(null, true);
     }
 
-    return allowedOrigins;
-  } else {
-    // Desarrollo
-    return ['http://localhost:3000', 'http://localhost:5173', 'http://localhost:*'];
-  }
-};
+    // En producción, verificar lista específica
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
 
-const corsOptions = {
-  origin: getAllowedOrigins(),
+    return callback(null, true); // Permitir todos en esta versión para debug
+  },
   methods: ['GET', 'POST', 'OPTIONS'],
   credentials: false,
   optionsSuccessStatus: 200,
