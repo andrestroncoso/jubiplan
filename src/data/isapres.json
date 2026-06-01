@@ -3,6 +3,7 @@
     {
       "id": "isapre-01",
       "nombre": "Banmédica",
+      "logo": "banmedica-logo.svg",
       "cotizacion": 7.0,
       "cobertura": "Excelente",
       "clinicas": 120,
@@ -39,6 +40,7 @@
     {
       "id": "isapre-02",
       "nombre": "Masvida",
+      "logo": "masvida-logo.svg",
       "cotizacion": 7.0,
       "cobertura": "Buena",
       "clinicas": 85,
@@ -75,6 +77,7 @@
     {
       "id": "isapre-03",
       "nombre": "Cruces",
+      "logo": "cruces-logo.svg",
       "cotizacion": 7.0,
       "cobertura": "Excelente",
       "clinicas": 135,
@@ -111,6 +114,7 @@
     {
       "id": "isapre-04",
       "nombre": "Fonasa",
+      "logo": "fonasa-logo.svg",
       "cotizacion": 7.0,
       "cobertura": "Regular",
       "clinicas": 60,
@@ -147,6 +151,7 @@
     {
       "id": "isapre-05",
       "nombre": "Consalud",
+      "logo": "consalud-logo.svg",
       "cotizacion": 6.8,
       "cobertura": "Excelente",
       "clinicas": 128,
@@ -183,6 +188,7 @@
     {
       "id": "isapre-06",
       "nombre": "Vidatrés",
+      "logo": "vidatres-logo.svg",
       "cotizacion": 6.9,
       "cobertura": "Buena",
       "clinicas": 95,
